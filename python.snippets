@@ -1,23 +1,26 @@
 snippet #!
 	#!/usr/bin/env python
+endsnippet
+	
 snippet coding
 	# -*- coding: ${1:utf-8} -*-
+endsnippet
 snippet imp
 	import ${1:module}
+endsnippet
 snippet from
 	from ${1:module} import ${2:class}
-snippet osv <= 6.0
-	from osv import osv
-	from osv import fields
-	${1}
-snippet osv >= 6.1
+endsnippet
+snippet osv7
 	from openerp.osv import osv
 	from openerp.osv import orm
 	from openerp.osv import fields
 	${1}
-snippet osv >= 8.0
+endsnippet
+snippet osv
 	from openerp import models, api, fields, exceptions
 	${1}
+endsnippet
 # Module Docstring
 snippet docs
 	'''
@@ -25,12 +28,15 @@ snippet docs
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
 	'''
+endsnippet
 snippet wh
 	while ${1:condition}:
 		${2:# code...}
+endsnippet
 snippet for
 	for ${1:needle} in ${2:haystack}:
 		${3:# code...}
+endsnippet
 # New Class
 snippet cl
 	class ${1:ClassName}(${2:object}):
@@ -39,6 +45,7 @@ snippet cl
 			${5:super($1, self).__init__()}
 			self.$4 = $4
 			${6}
+endsnippet
 snippet copyright
 	##############################################################################
 	#
@@ -62,27 +69,19 @@ snippet copyright
 	#
 	##############################################################################
 	${7}
+endsnippet
 snippet config
 	# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+endsnippet
 # this snippet is usefull to clear the rule cache
 # specialy with OpenObject 5.2 and multi company
 snippet rule
 	self.pool.get('ir.rule').domain_get.clear_cache(cr.dbname)
+endsnippet
 #
 # Define class for OpenObject
 #
-snippet oo OpenObject Class < 7.0
-	class ${1:ClassName}(osv.osv):
-		_name = '${2:ObjectName}'
-		_description = '${3}'
-	
-		_columns = {
-			${4}
-		}
-	
-	$1()
-	
-snippet oo OpenObject Class == 7.0
+snippet ooOpenObjectClass7
 	class ${1:ClassName}(orm.Model):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
@@ -90,39 +89,34 @@ snippet oo OpenObject Class == 7.0
 		_columns = {
 			${4}
 		}
+endsnippet
 	
-snippet oo OpenObject Class >= 8.0
+snippet ooOpenObjectClass8
 	class ${1:ClassName}(models.Model):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
 	
 		${4}
+endsnippet
 	
-snippet ooi OpenObject Class Inherit < 7.0
-	class ${1:ClassName}(osv.osv):
-		_inherit = '${2:ObjectName}'
 	
-		_columns = {
-			${3}
-		}
-	
-	$1()
-	
-snippet ooi OpenObject Class Inherit == 7.0
+snippet ooiOpenObjectClassInherit7
 	class ${1:ClassName}(orm.Model):
 		_inherit = '${2:ObjectName}'
 	
 		_columns = {
 			${3}
 		}
+endsnippet
 	
-snippet ooi OpenObject Class Inherit >= 8.0
+snippet ooiOpenObjectClassInherit8
 	class ${1:ClassName}(models.Model):
 		_inherit = '${2:ObjectName}'
 	
 		${3}
+endsnippet
 	
-snippet oom Wizard osv_memory
+snippet oomWizardosv_memory
 	class ${1:ClassName}(osv.osv_memory):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
@@ -132,8 +126,9 @@ snippet oom Wizard osv_memory
 		}
 	
 	$1()
+endsnippet
 	
-snippet oom Wizard TransientModel == 7.0
+snippet oomWizardTransientModel7
 	class ${1:ClassName}(orm.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
@@ -141,15 +136,17 @@ snippet oom Wizard TransientModel == 7.0
 		_columns = {
 			${4}
 		}
+endsnippet
 	
-snippet oom Wizard TransientModel >= 8.0
+snippet oomWizardTransientModel8
 	class ${1:ClassName}(models.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
 	
 		${4}
+endsnippet
 	
-snippet oomi Open Object\Wizard Inherit
+snippet oomiOpenObjectWizardInherit
 	class ${1:ClassName}(osv.osv_memory):
 		_inherit = '${2:ObjectName}'
 	
@@ -158,143 +155,195 @@ snippet oomi Open Object\Wizard Inherit
 		}
 	
 	$1()
+endsnippet
 	
-snippet oomi Wizard TransientModel Inherit == 7.0
+snippet oomiWizardTransientModelInherit7 
 	class ${1:ClassName}(orm.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
 	
 		${4}
+endsnippet
 	
-snippet oomi Wizard TransientModel Inherit >= 8.0
+snippet oomiWizardTransientModelInherit8
 	class ${1:ClassName}(models.TransientModel):
 		_inherit = '${2:ObjectName}'
 	
 		${3}
+endsnippet
 	
-snippet this (use in wizard)
+snippet this
 	this = self.browse(cr, uid, ids[0], context=context)
+endsnippet
 #
 # Define type of fields
 #
-snippet fields fields.char
+snippet fields.char
 	'${1:fieldname}': fields.char('${2:Label}', size=${3:64}, ${5}help='${4:Help note}'),${6}
-snippet fields fields.integer
+endsnippet
+snippet fields.integer
 	'${1:fieldname}': fields.integer('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.float
+endsnippet
+snippet fields.float
 	'${1:fieldname}': fields.float('${2:Label}', digits_compute=dp.get_precision('${3:PrecisionName}'), ${5}help='${4:Help note}'),${6}
-snippet fields fields.boolean
+endsnippet
+snippet fields.boolean
 	'${1:fieldname}': fields.boolean('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.date
+endsnippet
+snippet fields.date
 	'${1:fieldname}': fields.date('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.datetime
+endsnippet
+snippet fields.datetime
 	'${1:fieldname}': fields.datetime('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.selection
+endsnippet
+snippet fields.selection
 	'${1:fieldname}': fields.selection(${2:[('', '')]}, '${3:Label}', ${5}help='${4:Help note}'),${6}
-snippet fields fields.many2one
+endsnippet
+snippet fields.many2one
 	'${1:fieldname}_id': fields.many2one('${2:ObjectName}', '${3:Label}', ${5}help='${4:Help note}'),${6}
-snippet fields fields.many2many
+endsnippet
+snippet fields.many2many
 	'${1:fieldname}_ids': fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}', ${8}help='${7:Help note}'),${9}
-snippet fields fields.one2many
+endsnippet
+snippet fields.one2many
 	'${1:fieldname}_ids': fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}', ${6}help='${5:Help note}'),${7}
-snippet fields fields.function
+endsnippet
+snippet fields.function
 	'${1:fieldname}': fields.function(${2:FunctionName},
 					    method=${3:True},
 					    string='${4:label}',
 					    type='${5:float}',
 					    store=${6:False},${8}
 					    help='${7:Help note}'),${9}
-snippet fields fields.related
+endsnippet
+snippet fields.related
 	'${1:fieldname}': fields.related('${2:field in}', '${3:field rel}', type='${4:many2one}', ${5:relation='res.partner'},
 					    string='${6:Label}', ${8}help='${7:Help note}'),${9}
-snippet fields fields.property
+endsnippet
+snippet fields.property
 	'${1:fieldname}': fields.property('${2:object}', method=${3:True},
 			    string='${4:label}', type='${5:many2one}', ${7}help='${6:Help note}'),${8}
-snippet fields fields.text
+endsnippet
+snippet fields.text
 	'${1:fieldname}': fields.text('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.binary
+endsnippet
+snippet fields.binary
 	'${1:fieldname}': fields.binary('${2:Label}', ${4}help='${3:Help note}'),${5}
-snippet fields fields.reference
+endsnippet
+snippet fields.reference
 	'${1:fieldname}': fields.reference('${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}'),${6}
+endsnippet
 #
 # Define type of fields (New API)
 #
-snippet field fields.Char
+snippet fChar
 	${1:fieldname} = fields.Char(string='${2:Label}', size=${3:64}, ${5}help='${4:Help note}')${6}
-snippet field fields.Integer
+endsnippet
+snippet fInteger
 	${1:fieldname} = fields.Integer(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Float
+endsnippet
+snippet fFloat
 	${1:fieldname} = fields.Float(string='${2:Label}', digits_compute=dp.get_precision('${3:PrecisionName}'), ${5}help='${4:Help note}')${6}
-snippet field fields.Boolean
+endsnippet
+snippet fBoolean
 	${1:fieldname} = fields.Boolean(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Date
+endsnippet
+snippet fDate
 	${1:fieldname} = fields.Date(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Datetime
+endsnippet
+snippet fDatetime
 	${1:fieldname} = fields.Datetime(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Selection
+endsnippet
+snippet fSelection
 	${1:fieldname} = fields.Selection(${2:[('', '')]}, string='${3:Label}', ${5}help='${4:Help note}')${6}
-snippet field fields.Many2one
+endsnippet
+snippet fMany2one
 	${1:fieldname}_id = fields.Many2one('${2:ObjectName}', string='${3:Label}', ${5}help='${4:Help note}')${6}
-snippet field fields.Many2many
+endsnippet
+snippet fMany2many
 	${1:fieldname}_ids = fields.Many2many(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.One2many
+endsnippet
+snippet fOne2many
 	${1:fieldname}_ids = fields.One2many('${2:ObjectName}', '${3:fieldname}_id', string='${4:Label}', ${6}help='${5:Help note}')${7}
-snippet field fields.Property
+endsnippet
+snippet fProperty
 	${1:fieldname} = fields.Property('${2:object}', method=${3:True},
 			    string='${4:label}', type='${5:many2one}', ${7}help='${6:Help note}')${8}
-snippet field fields.Text
+endsnippet
+snippet fText
 	${1:fieldname} = fields.Text(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Binary
+endsnippet
+snippet fBinary
 	${1:fieldname} = fields.Binary(string='${2:Label}', ${4}help='${3:Help note}')${5}
-snippet field fields.Reference
+endsnippet
+snippet fReference
 	${1:fieldname} = fields.Reference(string='${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}')${6}
+endsnippet
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}', '${2:=}', '${3:done}')]
+endsnippet
 snippet help
 	help='${1:Help about Field}',
+endsnippet
 snippet readonly
 	readonly=True, ${1}
+endsnippet
 snippet required
 	required=True, ${1}
-snippet translate argument
+endsnippet
+snippet translateargument
 	translate=True, ${1}
-snippet translate import OpenERP <= 6.0
-	from tools.translate import _
-snippet translate import OpenERP >= 6.1
+endsnippet
+snippet translateimport
 	from openerp.tools.translate import _
+endsnippet
 snippet dp
 	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
-snippet digits digits
+endsnippet
+snippet digits
 	digits=(${1:16}, ${2:2}), ${3}
-snippet digits digits_compute
+endsnippet
+snippet digits_compute
 	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
+endsnippet
 snippet select
 	select=True, ${1}
-snippet ondel OnDelete Cascade
+endsnippet
+snippet ondelOnDeleteCascade
 	ondelete='cascade', ${1}
-snippet ondel OnDelete Set Null
+endsnippet
+snippet ondelOnDeleteSetNull
 	ondelete='set null', ${1}
-snippet ondelete OnDelete Cascade
+endsnippet
+snippet ondeleteOnDeleteCascade
 	ondelete='cascade', ${1}
-snippet ondelete OnDelete Set Null
+endsnippet
+snippet ondeleteOnDeleteSetNull
 	ondelete='set null', ${1}
+endsnippet
 snippet store
 	store=True, ${1}
-snippet compute compute
+endsnippet
+snippet computecompute
 	compute='${1:_methodName}', ${2}
-snippet compute inverse
+endsnippet
+snippet computeinverse
 	inverse='${1:_methodName}', ${2}
-snippet compute search
+endsnippet
+snippet computesearch
 	search='${1:_methodName}', ${2}
+endsnippet
 snippet relate
 	relate='${1:field.chain}', ${2}
+endsnippet
 snippet default
 	default='${1:value}', ${2}
+endsnippet
 #
 # Define function in osv.osv
 #
-snippet func def search
+snippet funcdefsearch
 	def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
 	    """
 	    ${1:Comment}
@@ -305,7 +354,8 @@ snippet func def search
 	    res = super(${2:ClassName}, self).search(cr, uid, args, offset=offset, limit=limit, order=order, context=context, count=count)
 	    ${3}
 	    return res
-snippet func def read
+endsnippet
+snippet funcdefread
 	def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
 	    """
 	    #TODO make doc string
@@ -317,7 +367,8 @@ snippet func def read
 	    #TODO : process on result
 	    ${3}
 	    return res
-snippet func def create
+endsnippet
+snippet funcdefcreate
 	def create(self, cr, uid, values, context=None):
 	    """
 	    #TODO make doc string
@@ -329,7 +380,8 @@ snippet func def create
 	    id = super(${1:ClassName}, self).create(cr, uid, values, context=context)
 	    ${3}
 	    return id
-snippet func def write
+endsnippet
+snippet funcdefwrite
 	def write(self, cr, uid, ids, values, context=None):
 	    """
 	    #TODO make doc string
@@ -341,7 +393,8 @@ snippet func def write
 	    res = super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
 	    ${3}
 	    return res
-snippet func def unlink
+endsnippet
+snippet funcdefunlink
 	def unlink(self, cr, uid, ids, context=None):
 	    """
 	    #TODO make doc string
@@ -353,7 +406,8 @@ snippet func def unlink
 	    ${3}
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
 	    return res
-snippet func def copy
+endsnippet
+snippet funcdefcopy
 	def copy(self, cr, uid, id, default=None, context=None):
 	    """
 	    #TODO make doc string
@@ -364,7 +418,8 @@ snippet func def copy
 	    #TODO : process on result
 	    ${3}
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
-snippet func def default_get
+endsnippet
+snippet funcdefdefault_get
 	def default_get(self, cr, uid, fields_list, context=None):
 	    """
 	    #TODO make doc string
@@ -375,7 +430,8 @@ snippet func def default_get
 	    values = super(${2:ClassName}, self).default_get(cr, uid, fields_list, context=context)
 	    ${3}
 	    return values
-snippet func def fields_get
+endsnippet
+snippet funcdeffields_get
 	def fields_get(self, cr, uuid, fields=None, context=None):
 	    """
 	    #TODO make doc string
@@ -386,7 +442,8 @@ snippet func def fields_get
 	    #TODO : process on result
 	    ${3}
 	    return super(${1:ClassName}, self).fields_get(cr, uid, fields, context, read_access)
-snippet func def init
+endsnippet
+snippet funcdefinit
 	def init(self, cr):
 	    """
 	    ${2:Comment this}
@@ -396,7 +453,8 @@ snippet func def init
 	            ${3:SELECT...})
 	    """)
 	${4}
-snippet func def _name_get
+endsnippet
+snippet funcdef_name_get
 	def name_get(self, cr, uid, ids, context=None):
 	    """
 	    #TODO make doc string
@@ -414,7 +472,8 @@ snippet func def _name_get
 	    for read in reads:
 	        res.append( ( read['id'], read[self._rec_name]) )
 	    return res
-snippet func def _name_search
+endsnippet
+snippet funcdef_name_search
 	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
 	    """
 	    #TODO make doc string
@@ -432,7 +491,8 @@ snippet func def _name_search
 	        ids = self.search(cr, uid, [('name', operator, name)] + args, limit=limit)
 	    return self.name_get(cr, uid, ids, context=context)
 	    ${2}
-snippet func on_change
+endsnippet
+snippet funcon_change
 	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
 	    """
 	    #TODO make doc string
@@ -448,14 +508,16 @@ snippet func on_change
 	            'field_2': res2
 	        }
 	    }
-snippet func fields.function
+endsnippet
+snippet funcfields.function
 	def _get_${1:field_name}(self, cr, uid, ids, field_name, args, context=None):
 	    result = {}
 	    for ${2:name} in self.browse(cr, uid, ids, context=context):
 	        result[$2.id] = ${3:value}
 	
 	    return result
-snippet func fields.function multi
+endsnippet
+snippet funcfields.functionmulti
 	def _get_${1:function_name}(self, cr, uid, ids, field_name, args, context=None):
 	    result = {}
 	    for ${2:name} in self.browse(cr, uid, ids, context=context):
@@ -464,91 +526,83 @@ snippet func fields.function multi
 	        }
 	
 	    return result
-snippet func fields_view_get v 5.0
-	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
-	    """
-	    Comment here
-	    """
-	    # use lxml to compose the arch XML
-	    arch = ${1:XML HERE}
-	    fields = ${2:FIELDS HERE}
-	    tb = {'print': [], 'action': [], 'relate': []}
-	    result = {
-	        'arch': arch,
-	        'fields': fields,
-	        'toolbar': tb,
-	    }
-	    return result
-snippet func fields_view_get v 6.0
-	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
-	    """
-	    Comment here
-	    """
-	    # use lxml to compose the arch XML
-	    arch = ${1:XML HERE}
-	    fields = ${2:FIELDS HERE}
-	    tb = {'print': [], 'action': [], 'relate': []}
-	    result = {
-	        'arch': arch,
-	        'fields': fields,
-	        'toolbar': tb,
-	    }
-	    return result
+endsnippet
 ###
 ## Common method define in osv.osv
 ##
 snippet read
 	self.read(cr, uid, ${1:ids}, ['${2:field}'], context=context)${3}
+endsnippet
 snippet browse
 	self.browse(cr, uid, ${1:ids}, context=context)${2}
+endsnippet
 snippet search
 	self.search(cr, uid, [('${1:state}', '${2:=}', '${3:done}')], context=context)${4}
+endsnippet
 snippet create
 	id = self.create(cr, uid, ${1:vals}, context=context)${2}
+endsnippet
 snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)${3}
+endsnippet
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)${2}
+endsnippet
 snippet copy
 	self.copy(cr, uid, ${1:ids}, ${2:default}, context=context)${3}
+endsnippet
 snippet perm_read
 	self.perm_read(cr, uid, [${1:id}], context=context)${2}
+endsnippet
 ###
 ## Common methods defined in Model (New API)
 ##
-snippet Func search (other model)
+snippet Funcsearchothermodel
 	self.env['${1:model}'].search([${2:('name', '=', name)}])
-snippet Func browse (other model)
+endsnippet
+snippet Funcbrowseothermodel
 	self.env['${1:model}'].browse(${2:ids})
-snippet Func create (other model)
+endsnippet
+snippet Funccreateothermodel
 	self.env['${1:model}'].create(${2:values})
-snippet Func write (other model)
+endsnippet
+snippet Funcwriteothermodel
 	self.env['${1:model}'].write(${2:values})
-snippet Func copy (other model)
+endsnippet
+snippet Funccopyothermodel
 	self.env['${1:model}'].copy(${2:values})
-snippet Func unlink (other model)
+endsnippet
+snippet Funcunlinkothermodel
 	self.env['${1:model}'].unlink(${2:values})
-snippet Func search (same model)
+endsnippet
+snippet Funcsearchsamemodel
 	self.search([${2:('name', '=', name)}])
-snippet Func browse (same model)
+endsnippet
+snippet Funcbrowsesamemodel
 	self.browse(${2:ids})
-snippet Func create (same model)
+endsnippet
+snippet Funccreatesamemodel
 	self.create(${2:values})
-snippet Func write (same model)
+endsnippet
+snippet Funcwritesamemodel
 	self.write(${2:values})
-snippet Func copy (same model)
+endsnippet
+snippet Funccopysamemodel
 	self.copy(${2:values})
+endsnippet
 #
 # Define all variables in osv.osv begin by _
 #
-snippet _ _auto
+snippet _auto
 	_auto = False
-snippet _ _columns
+endsnippet
+snippet _columns
 	_columns = {
 	    ${1:# ... code}
 	}
 	${2}
-snippet _ _constraints
+endsnippet
+snippet _constraints
 	def ${1:_check_method}(self, cr, uid, ids, context=None):
 	    #TODO : check condition and return boolean accordingly
 	    if context is None:
@@ -558,149 +612,205 @@ snippet _ _constraints
 	_constraints = [
 	    ($1, 'Error: Invalid Message', ['${2:field_name}']),
 	]
-snippet _ _date_name
+endsnippet
+snippet _date_name
 	_date_name='${1:Date field}'
-snippet _ _defaults
+endsnippet
+snippet _defaults
 	_defaults = {
 	    '${1:Field}': lambda *a: ${2:Value},
 	}
-snippet _ _description
+endsnippet
+snippet _description
 	_description = ${1:Object description}
-snippet _ _order
+endsnippet
+snippet _order
 	_order = '${1:Field name to order}'
-snippet _ _parent_store
+endsnippet
+snippet _parent_store
 	_parent_store = ${1:False}
-snippet _ _rec_name
+endsnippet
+snippet _rec_name
 	_rec_name = '${1:Field name}'
-snippet _ _sequence
+endsnippet
+snippet _sequence
 	_sequence = '${1:Field name use as sequence}'
-snippet _ _sql_constraints unique
+endsnippet
+snippet _sql_constraintsunique
 	_sql_constraints = [
 	    ('${1:Field name}_unique', 'UNIQUE ($1)', 'The $1 of the OpenERPModel must be unique !'),
 	]
-snippet _ _sql_constraints check
+endsnippet
+snippet _sql_constraintscheck
 	_sql_constraints = [
 	    ('${1:Field name}_check', 'CHECK ($1)', 'Check error for $1 !'),
 	]
-snippet _ _table
+endsnippet
+snippet _table
 	_table = '${1:Table name in PostgreSQL}'
-snippet _ _sql
+endsnippet
+snippet _sql
 	_sql = """${1:CREATE TABLE .....}"""
-snippet _ _log_access
+endsnippet
+snippet _log_access
 	_log_access = False
-snippet . search (Old API)
+endsnippet
+snippet .searchOldAPI
 	.search(cr, uid, ${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None}, context=${5:context})${6}
-snippet . browse (Old API)
+endsnippet
+snippet .browseOldAPI
 	.browse(cr, uid, ${1:ids}, context=${2:context})${3}
-snippet . read (Old API)
+endsnippet
+snippet .readOldAPI
 	.read(cr, uid, ${1:ids}, ['${2:name}'], context=${3:context})${4}
-snippet . create (Old API)
+endsnippet
+snippet .createOldAPI
 	.create(cr, uid, ${1:vals}, context=${2:context})${3}
-snippet . write (Old API)
+endsnippet
+snippet .writeOldAPI
 	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
-snippet . unlink (Old API)
+endsnippet
+snippet .unlinkOldAPI
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
-snippet . copy (Old API)
+endsnippet
+snippet .copyOldAPI
 	.copy(cr, uid, ${1:id}, ${2:default}, context=${3:context})${4}
-snippet . search (New API)
+endsnippet
+snippet .searchNewAPI
 	.search(${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None})${5}
-snippet . browse (New API)
+endsnippet
+snippet .browseNewAPI
 	.browse(${1:ids})${2}
-snippet . create (New API)
+endsnippet
+snippet .createNewAPI
 	.create(${1:vals})${2}
-snippet . write (New API)
+endsnippet
+snippet .writeNewAPI
 	.write(${1:vals})${2}
-snippet . unlink (New API)
+endsnippet
+snippet .unlinkNewAPI
 	.unlink()${1}
-snippet . copy (New API)
+endsnippet
+snippet .copyNewAPI
 	.copy(${1:default})${2}
+endsnippet
 ###
 ## define exception
-snippet except raise osv.except_osv(title, message) (Old API)
+snippet exceptraiseOldAPI
 	raise osv.except_osv(_('${1:Error}'), _('${2:Message}'))
-snippet except raise wizard.except_wizard(title, message) (Very old API)
-	raise wizard.except_wizard(_('${1:Error}'), _('${2:Message}'))
-snippet except raise exceptions.Warning(title, message) (New API)
+endsnippet
+snippet exceptraiseWarning
 	raise exceptions.Warning(_('${1:Error}'), _('${2:Message}'))
-snippet except raise exceptions.RedirectWarning(title, message) (New API)
+endsnippet
+snippet exceptraiseRedirectWarning
 	raise exceptions.RedirectWarning(_('${1:Message}'), ${2:action_id}, _('${3:Button Text}'))
+endsnippet
 ###
 ## Cursor
-snippet cr cr.execute()
+snippet cr.execute()
 	cr.execute("""${1:Query}""")
-snippet cr cr.mogrify()
+endsnippet
+snippet cr.mogrify()
 	cr.mogrify("""${1:Query}""")
-snippet cr cr.commit()
+endsnippet
+snippet cr.commit()
 	cr.commit()
-snippet cr cr.rollback()
+endsnippet
+snippet cr.rollback()
 	cr.rollback()
-snippet cr cr.close()
+endsnippet
+snippet cr.close()
 	cr.close()
-snippet cr cr.autocommit()
+endsnippet
+snippet cr.autocommit()
 	cr.autocommit(${1:True})
-snippet cr cr.fetchall()
+endsnippet
+snippet cr.fetchall()
 	cr.fetchall()
-snippet cr cr.dictfetchall()
+endsnippet
+snippet cr.dictfetchall()
 	cr.dictfetchall()
-snippet cr cr.fetchone()
+endsnippet
+snippet cr.fetchone()
 	cr.fetchone()
+endsnippet
 # Usefull tips
 snippet pooler
 	pooler.get_pool(cr.dbname)
+endsnippet
 snippet pool
 	pool.get('${1:res.partner}')${2}
+endsnippet
 snippet !context
 	if context is None:
 	    context = {}
+endsnippet
 #
 # Usefull Snippet
 #
 snippet active
 	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),${3}
+endsnippet
 snippet sequence
 	'sequence': fields.integer('${1:Sequence}'),${2}
+endsnippet
 snippet color
 	'color': fields.integer('${1:Colour}'),
+endsnippet
 	# PLEASE ADD A DEFAULT VALUE 0 FOR THE color FIELD!
 snippet state
 	'state': fields.selection(${1:[('', '')]}, '${2:Label}', help='${3:Help note}'),${4}
 	# PLEASE ADD A DEFAULT VALUE (e.g. draft) FOR THE state FIELD!
+endsnippet
 snippet logger
 	import netsvc
 	logger = netsvc.Logger()
+endsnippet
 snippet logging
 	import logging
 	logger = logging.getLogger('${1:module}')
+endsnippet
 snippet notify
 	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}')${4}
-snippet log Debug
+endsnippet
+snippet logDebug
 	logger.debug('${1}')
-snippet log Info
+endsnippet
+snippet logInfo
 	logger.info('${1}')
-snippet log Warning
+endsnippet
+snippet logWarning
 	logger.warning('${1}')
-snippet log Error
+endsnippet
+snippet logError
 	logger.error('${1}')
+endsnippet
 snippet ctx
 	ctx = context.copy()
+endsnippet
 #
 # Other python declaration
 #
 snippet fm
 # New Function
+endsnippet
 snippet super
 	super(${1:ClassName}, self).${2:methodName}(cr, uid, ${3:ids}, ${4}context=context)${5}
+endsnippet
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 	    """${3:docstring for $1}"""
 	    ${4:pass}
+endsnippet
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 	    ${3}
+endsnippet
 # New Method
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
 	    ${3:pass}
+endsnippet
 # New Property
 snippet property
 	def ${1:foo}():
@@ -709,31 +819,37 @@ snippet property
 	        ${3:return self._$1}
 	    def fset(self, value):
 	        ${4:self._$1 = value}
+endsnippet
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
 snippet self.
+endsnippet
+snippet selfmethod
 	self.${1:method}(${2})
-snippet try Try/Except
+snippet tryExcept
 	try:
 	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
 	    ${4:raise $3}
-snippet try Try/Except/Else
+endsnippet
+snippet tryExceptElse
 	try:
 	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
 	    ${4:raise $3}
 	else:
 	    ${5:pass}
-snippet try Try/Except/Finally
+endsnippet
+snippet tryTryExceptFinally
 	try:
 	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
 	    ${4:raise $3}
 	finally:
 	    ${5:pass}
-snippet try Try/Except/Else/Finally
+endsnippet
+snippet tryExceptElseFinally
 	try:
 	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
@@ -742,78 +858,109 @@ snippet try Try/Except/Else/Finally
 	    ${5:pass}
 	finally:
 		${6:pass}
+endsnippet
 # if __name__ == '__main__':
 snippet ifmain
 	if __name__ == '__main__':
 	    ${1:main()}
 # __magic__
-snippet _ __init__
+snippet __init__
 	__${1:init}__${2}
+endsnippet
 snippet ifcontext
 	if context is None:
 	    context = {}
 	${1}
+endsnippet
 snippet pdb
 	import pdb
 	pdb.set_trace()
-snippet date to_string
+endsnippet
+snippet date_to_string
 	fields.Datetime.to_string(${1:datetime instance})${2}
-snippet date from_string
+endsnippet
+snippet date_from_string
 	fields.Datetime.from_string(${1:datetime string})${2}
+endsnippet
 # workflow
-snippet trg trg_write
+snippet trg_write
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_write(uid, '${1:model}', ${2:id}, cr)
-snippet trg trg_trigger
+endsnippet
+snippet trg_trigger
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_trigger(uid, '${1:model}', ${2:id}, cr)
-snippet trg trg_delete
+endsnippet
+snippet trg_delete
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_delete(uid, '${1:model}', ${2:id}, cr)
-snippet trg trg_create
+endsnippet
+snippet trg_create
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_create(uid, '${1:model}', ${2:id}, cr)
-snippet trg trg_validate
+endsnippet
+snippet trg_validate
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_validate(uid, '${1:model}', ${2:id}, '${3:signal}', cr)
-snippet trg trg_redirect
+endsnippet
+snippet trg_redirect
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_redirect(uid, '${1:model}', ${2:id}, ${3:new id}, cr)
+endsnippet
 snippet context_get
 	context = self.pool.get('res.users').context_get(cr, uid)
+endsnippet
 # Decorators
-snippet @ model
+snippet @model
 	@api.model
-snippet @ multi
+endsnippet
+snippet @multi
 	@api.multi
-snippet @ one
+endsnippet
+snippet @one
 	@api.one
-snippet @ returns
+endsnippet
+snippet @returns
 	@api.returns('${1:model}')${2}
-snippet @ constrains
+endsnippet
+snippet @constrains
 	@api.constrains('${1:field}')${2}
-snippet @ onchange
+endsnippet
+snippet @onchange
 	@api.onchange('${1:field}')${2}
-snippet @ depends
+endsnippet
+snippet @depends
 	@api.depends('${1:field.chain}')${2}
+endsnippet
 # Environment access
-snippet env cr
+snippet envcr
 	self.env.cr
-snippet env uid
+endsnippet
+snippet envuid
 	self.env.uid
-snippet env user
+endsnippet
+snippet envuser
 	self.env.user
-snippet env context
+endsnippet
+snippet envcontext
 	self.env.context
-snippet env ref
+endsnippet
+snippet envref
 	self.env.ref('${1:xml id}')${2}
-snippet env model
+endsnippet
+snippet envmodel
 	self.env['${1:model}']${2}
-snippet env new env
+endsnippet
+snippet envnewenv
 	self.env(${1:cr}, ${2:uid}, ${3:context})${4}
-snippet env with_env
+endsnippet
+snippet envwith_env
 	self.env.with_env(${1:env})${2}
-snippet env with_context
+endsnippet
+snippet envwith_context
 	self.env.with_context(${1:context})${2}
-snippet env sudo
+endsnippet
+snippet envsudo
 	self.env.sudo(${1:uid})${2}
+endsnippet
+	

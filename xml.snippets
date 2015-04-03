@@ -1,169 +1,225 @@
 snippet <?
 	<?xml version="1.0" encoding="UTF-8"?>
+endsnippet
 snippet oerp
 	<openerp>
 	    <data>
 	    $1
 	    </data>
 	</openerp>
+endsnippet
 snippet openerp
 	<openerp>
 	    <data>
 	    $1
 	    </data>
 	</openerp>
-snippet field <field ... />
+endsnippet
+snippet field 
 	<field name="${1:Field}"/>
-snippet field <field ... ></field>
+endsnippet
+snippet fieldc
 	<field name="${1:Field}">${2:Value}</field>
-snippet field <field ... colspan ... />
+endsnippet
+snippet fieldcol
 	<field name="${1:Field}" colspan="${2:4}"/>
-snippet field <field ... colspan ... col ... />
+endsnippet
+snippet fieldcols
 	<field name="${1:Field}" colspan="${2:4}" col="${3:4}"/>
-snippet field <field ref="xxx"... />
+endsnippet
+snippet fieldref
 	<field name="${1:Field}" ref="${2:ir_model_data}"/>
-snippet field <field eval="xxx"... />
+endsnippet
+snippet fieldeval
 	<field name="${1:Field}" eval="${2:Value}"/>
-snippet field <field name="arch" type="xml"></field>
+endsnippet
+snippet fieldarch
 	<field name="arch" type="xml">
 	    $1
 	</field>
+endsnippet
 snippet button
 	<button string="${1:Validate}" icon="${2:gtk-ok}" states="${3:draft}" type="${4:object}" name="${5:to_validate}"/>
+endsnippet
 snippet domain
 	domain="[('${1:state}','${2:=}', ${3:True})]"
+endsnippet
 snippet context
 	context="{}"
-snippet attrs required
+endsnippet
+snippet attrsrequired
 	attrs="{'${1:required}': [('${2:state}','${3:=}', ${4:'value'})]}"
-snippet attrs readonly
+endsnippet
+snippet attrsreadonly
 	attrs="{'${1:readonly}': [('${2:state}','${3:=}', ${4:'value'})]}"
-snippet attrs invisible
+endsnippet
+snippet attrsinvisible
 	attrs="{'${1:invisible}': [('${2:state}','${3:=}', ${4:'value'})]}"
-snippet class oe_highlight
+endsnippet
+snippet classoe_highlight
 	class="oe_highlight"
-snippet class oe_title
+endsnippet
+snippet classoe_title
 	class="oe_title"
-snippet class oe_edit_only
+endsnippet
+snippet classoe_edit_only
 	class="oe_edit_only"
+endsnippet
 snippet placeholder
 	placeholder="${1:The Placeholder}"
+endsnippet
 snippet select
 	select="1"
-snippet type object
+endsnippet
+snippet typeobject
 	type="object"
-snippet type action
+endsnippet
+snippet typeaction
 	type="action"
-snippet type workflow
+endsnippet
+snippet typeworkflow
 	type="workflow"
+endsnippet
 snippet onchange
 	on_change="onchange_${1:method}(${1:argument}, context=context)"
+endsnippet
 snippet on_change
 	on_change="onchange_${1:method}(${1:argument}, context=context)"
+endsnippet
 snippet sep
 	<separator string="${1:Label}" colspan="${2:4}"/>
+endsnippet
 snippet separator
 	<separator string="${1:Label}" colspan="${2:4}"/>
+endsnippet
 snippet group
 	<group colspan="${1:4}">
 	    $2
 	</group>
+endsnippet
 snippet notebook
 	<notebook colspan="4">
 	    <page string="${1:Label}">
 		$2
 	    </page>
 	</notebook>
+endsnippet
 snippet page
 	<page string="${1:Label}">
 	    $2
 	</page>
-snippet label < 7.0
-	<label string="${1:Label}"/>
-snippet label >= 7.0
+endsnippet
+snippet label
 	<label for="${2:Field}" string="${1:Label}"/>
+endsnippet
 snippet attribute
 	<attribute name="${1:name}">${2:value}</attribute>
+endsnippet
 snippet attr
 	<attribute name="${1:name}">${2:value}</attribute>
+endsnippet
 snippet newline
 	<newline/>
+endsnippet
 snippet record
 	<record id="${1:ir_model_data}" model="${2:Model}">
 	    $3
 	</record>
+endsnippet
 snippet ref
 	ref="${1:ir_model_data}"
+endsnippet
 snippet eval
 	eval="${1:Value}"
+endsnippet
 snippet nol
 	nolabel="1" ${1}
+endsnippet
 snippet nolabel
 	nolabel="1" ${1}
+endsnippet
 snippet readonly
 	readonly="1" ${1}
+endsnippet
 snippet required
 	required="1" ${1}
+endsnippet
 snippet invisible
 	invisible="1" ${1}
+endsnippet
 snippet pos
 	position="${1:inside}"
+endsnippet
 snippet position
 	position="${1:inside}"
-snippet mode tree,form
+endsnippet
+snippet modetreeform
 	mode="tree,form"
-snippet mode tree
+endsnippet
+snippet modetree
 	mode="tree"
+endsnippet
 snippet colspan
 	colspan="4"
+endsnippet
 snippet col
 	col="4"
+endsnippet
 snippet colors
 	colors="${1:grey}:${2:state}${3:==}'${4:draft}'${5:;}"
-snippet editable top
+endsnippet
+snippet editabletop
 	editable="top"
-snippet editable bottom
+endsnippet
+snippet editablebottom
 	editable="bottom"
+endsnippet
 snippet focus
 	default_focus="1"
+endsnippet
 snippet noupdate
 	noupdate="1"
+endsnippet
 snippet confirm
 	confirm="Are you sure ?"
+endsnippet
 snippet version
 	version="7.0"
+endsnippet
 snippet tree
 	<tree string="${1:Label}">
 	    $2
 	</tree>
-snippet form < 7.0
-	<form string="${1:Label}">
-	    $2
-	</form>
-snippet form >= 7.0
+endsnippet
+snippet form
 	<form string="${1:Label}" version="7.0">
 	    $2
 	</form>
+endsnippet
 snippet calendar
 	<calendar string="${1:Label}" date_start="${2:Begin date field}"
 	          date_stop="${3:End date field}" color="${4:Field group for color}">
 	    $5
 	</calendar>
-snippet gantt Start Date + Delay
+endsnippet
+snippet ganttStartDate+Delay
 	<gantt string="${1:Gantt}" color="${2:Field}"
 	       date_start="${3:Start Date Field}" date_delay="${4:Delay Field}" default_group_by="${5:Group By Field}">
 		<field name="name"/>
 	</gantt>
-snippet gantt Start Date + End Date
+endsnippet
+snippet ganttStartDate+EndDate
 	<gantt string="${1:Gantt}" color="${2:Field}"
 	       date_start="${3:Start Date Field}" date_stop="${4:End Date Field}" default_group_by="${5:Group By Field}">
 		<field name="name"/>
 	</gantt>
+endsnippet
 snippet graph
 	<graph string="${1:Graph}" type="${2:bar}">
 	    <field name="${3:name}"/>
 	    <field name="${4:supercount}" operator="+"/>
 	</graph>
+endsnippet
 snippet kanban
 	<kanban default_group_by="${1:GroupBy Field}">
 	    <field name="color"/>
@@ -190,31 +246,31 @@ snippet kanban
 	        </t>
 	    </templates>
 	</kanban>
+endsnippet
 snippet header
 	<header>
 	    $1
 	</header>
+endsnippet
 snippet sheet
 	<sheet>
 	    $1
 	</sheet>
-snippet menuitem Action < 7.0
-	<menuitem id="menu_${1:ir_model_data}" 
-	    parent="menu_${2:menu_parent}"
-	    sequence="${3:20}"
-	    action="action_${4:Action}"/>
-snippet menuitem Action >= 7.0
+endsnippet
+snippet menuitemAction
 	<menuitem id="${1:ir_model_data}_menu" 
 	    parent="${2:menu_parent}_menu"
 	    sequence="${3:20}"
 	    name="${5:Label}"
 	    action="${4:Action}_action"/>
-snippet menuitem Name < 7.0
+endsnippet
+snippet menuitemName 
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
-snippet menuitem Server Action
+endsnippet
+snippet menuitemServerAction
 	<record id="action_${1:refid_server}" model="ir.actions.server">
 	    <field name="name">${2:Name of the action}</field>
 	    <field name="model_id" ref="model_${3:res_partner}"/>
@@ -227,46 +283,14 @@ snippet menuitem Server Action
 	    id="menu_$1" 
 	    parent="base.menu_config"
 	    type="server" icon="STOCK_EXECUTE" sequence="100" />
-snippet wizard <wizard/>
+endsnippet
+snippet wizard
 	<wizard id="wizard_${1:name}"
 	    string="${2:label}"
 	    model="${3:ir.model}"
 	    name="${4:wizard_name}"/>
-snippet wizard osv_memory menu < 7.0
-	<record id="view_${1:model}_form" model="ir.ui.view">
-	    <field name="name">$2.form</field>
-	    <field name="model">${2:Model}</field>
-	    <field name="type">form</field>
-	    <field name="priority" eval="8"/>
-	    <field name="arch" type="xml">
-		<form string="${3:Label}">
-		    <field name="${4:name}"/>
-		    <separator string="" colspan="4" />
-		    <group colspan="4" col="6">
-		        <label string ="" colspan="2"/>
-		        <button icon="gtk-cancel" special="cancel" string="Cancel"/>
-		        <button icon="terp-gtk-go-back-rtl" string="Start" name="${5:_continue}" type="object"/>
-		    </group>
-		</form>
-	    </field>
-	</record>
-	
-	<record model="ir.actions.act_window" id="action_$1_view">
-	    <field name="name">$3</field>
-	    <field name="type">ir.actions.act_window</field>
-	    <field name="res_model">$2</field>
-	    <field name="view_type">form</field>
-	    <field name="view_mode">form</field>
-	    <field name="domain">[]</field>
-	    <field name="context">{}</field>
-	    <field name="target">new</field>
-	</record>
-	
-	<menuitem id="menu_$1_wizard"
-	    parent="menu_${6:menu_parent}"
-	    sequence="${7:20}"
-	    action="action_$1_view"/>
-snippet wizard osv_memory menu >= 7.0
+endsnippet
+snippet wizardosv_memorymenu 
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
 	    <field name="model">${2:Model}</field>
@@ -330,7 +354,8 @@ snippet wizard osv_memory toolbar
 	    <field name="model">${5:Model to launch wizard}</field>
 	    <field name="value" eval="'ir.actions.act_window,' + str(ref('action_$1_view'))" />
 	</record>
-snippet view form
+endsnippet
+snippet viewform
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
 	    <field name="model">${2:Model}</field>
@@ -342,7 +367,8 @@ snippet view form
 		</form>
 	    </field>
 	</record>
-snippet view tree
+endsnippet
+snippet viewtree
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
 	    <field name="model">${2:Model}</field>
@@ -354,7 +380,8 @@ snippet view tree
 		</tree>
 	    </field>
 	</record>
-snippet view search
+endsnippet
+snippet viewsearch
 	<record id="view_${1:model}_search" model="ir.ui.view">
 	    <field name="name">$2.search</field>
 	    <field name="model">${2:Model}</field>
@@ -366,7 +393,8 @@ snippet view search
 		</search>
 	    </field>
 	</record>
-snippet view both (tree, form)
+endsnippet
+snippet viewboth
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
 	    <field name="model">${2:Model}</field>
@@ -390,7 +418,8 @@ snippet view both (tree, form)
 		</form>
 	    </field>
 	</record>
-snippet view both (tree, form, search)
+endsnippet
+snippet viewboth3
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
 	    <field name="model">${2:Model}</field>
@@ -425,7 +454,8 @@ snippet view both (tree, form, search)
 		</search>
 	    </field>
 	</record>
-snippet view both (tree, form) + Action + Menu
+endsnippet
+snippet viewbothmenu
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
 	    <field name="model">${2:Model}</field>
@@ -544,7 +574,8 @@ snippet view both (tree, form, search) + Action + Menu
 	    parent="${5:module.xmlid}"
 	    sequence="20"
 	    action="act_open_$1_view"/>
-snippet view form (inherit)
+endsnippet
+snippet viewforminherit
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
 	    <field name="model">${2:Model}</field>
@@ -558,95 +589,130 @@ snippet view form (inherit)
 		</xpath>
 	    </field>
 	</record>
+endsnippet
 snippet act_window
 	<act_window id="act_${1:ir_model_data}"
 	    name="${2:Name}"
 	    res_model="${3:destination_model}"
 	    src_model="${4:source_model}"
 	    domain="[('${5:field}', '${6:operator}', ${7:active_id})]"/>
-snippet xpath after
+endsnippet
+snippet xpathafter
 	<xpath expr="//field[@${1:name}='${2:field}']" position="after">
 	    <field name="${3:name}"/>
 	</xpath>
-snippet xpath before
+endsnippet
+snippet xpathbefore
 	<xpath expr="//field[@${1:name}='${2:field}']" position="before">
 	    <field name="${3:name}"/>
 	</xpath>
-snippet xpath replace
+endsnippet
+snippet xpathreplace
 	<xpath expr="//field[@${1:name}='${2:field}']" position="replace">
 	    <field name="$2"/>
 	</xpath>
-snippet xpath inside
+endsnippet
+snippet xpathinside
 	<xpath expr="//notebook" position="inside">
 	    <page string="${1:text}">
 	    <field name="${2:name}"/>
 	    </page>
 	</xpath>
-snippet xpath attribute
+endsnippet
+snippet xpathattribute
 	<xpath expr="//field[@${1:name}='${2:field}']" position="attributes">
 	    <attribute name="${3:required}">${4:1}</attribute>
 	</xpath>
-snippet widget selection
+endsnippet
+snippet widgetselection
 	widget="selection"
-snippet widget float_time
+endsnippet
+snippet widgetfloat_time
 	widget="float_time"
-snippet widget url
+endsnippet
+snippet widgeturl
 	widget="url"
-snippet widget progressbar
+endsnippet
+snippet widgetprogressbar
 	widget="progressbar"
-snippet widget many2many
+endsnippet
+snippet widgetmany2many
 	widget="many2many"
-snippet widget many2many_tags
+endsnippet
+snippet widgetmany2many_tags
 	widget="many2many_tags"
-snippet widget one2many_list
+endsnippet
+snippet widgetone2many_list
 	widget="one2many_list"
-snippet widget password
+endsnippet
+snippet widgetpassword
 	password="1"
-snippet widget statusbar (>= 7.0)
+endsnippet
+snippet widgetstatusbar 
 	widget="statusbar"
+endsnippet
 snippet operator
 	operator="+"
-snippet test <test expr=""/>
+endsnippet
+snippet test
 	<test expr="len(${1:one2many}) == ${2:1}"/>
-snippet test <test expr=""></test>
+endsnippet
+snippet test2
 	<test expr="${1:state}">${2:confirmed}</test>
-snippet assert id
+endsnippet
+snippet assertid
 	<assert id="${1:ir_model_data}" model="${2:sale.order}" severity="${3:error}"
 	        string="${4:Text appear when an error raise}">
 		$0
 	</assert>
-snippet assert search
+endsnippet
+snippet assertsearch
 	<assert search="[('${1:name}','${2:=}','${3:TEXT}')]" model="${4:sale.order}" severity="${5:error}" count="${6:1}"
 	        string="${7:Text appear when an error raise}">
 		$0
 	</assert>
-snippet workflow ref
+endsnippet
+snippet workflowref
 	<workflow action="${1:button_confirm}" model="${2:sale.order}" ref="${3:ir_model_data}"/>
-snippet workflow search
+endsnippet
+snippet workflowsearch
 	<workflow action="${1:button_confirm}" model="${2:sale.order}">
 	    <value model="$2" search="[('${3:name}','${4:=}','${5:TEXT}')]"/>
 	</worklow>
-snippet delete id
+endsnippet
+snippet deleteid
 	<delete model="${1:model}" id="${2:ir_model_data}"/>
-snippet delete search
+endsnippet
+snippet deletesearch
 	<delete model="${1:model}" search="[('${2:field}', '${3:operator}', '${4:value}')]"/>
-snippet icon gtk-apply
+endsnippet
+snippet icongtk-apply
 	icon="gtk-apply"
-snippet icon gtk-cancel
+endsnippet
+snippet icongtk-cancel
 	icon="gtk-cancel"
-snippet icon gtk-close
+endsnippet
+snippet icongtk-close
 	icon="gtk-close"
-snippet icon gtk-convert
+endsnippet
+snippet icongtk-convert
 	icon="gtk-convert"
-snippet icon gtk-execute
+endsnippet
+snippet icongtk-execute
 	icon="gtk-execute"
-snippet icon gtk-go-forward
+endsnippet
+snippet icongtk-go-forward
 	icon="gtk-go-forward"
-snippet icon gtk-jump-to
+endsnippet
+snippet icongtk-jump-to
 	icon="gtk-jump-to"
-snippet icon gtk-media-pause
+endsnippet
+snippet icongtk-media-pause
 	icon="gtk-media-pause"
-snippet icon gtk-ok
+endsnippet
+snippet icongtk-ok
 	icon="gtk-ok"
-snippet icon gtk-print
+endsnippet
+snippet icongtk-print
 	icon="gtk-print"
+endsnippet
