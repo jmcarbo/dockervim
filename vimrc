@@ -27,4 +27,4 @@ syntax on
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsListSnippets="<tab>"
+let g:UltiSnipsListSnippets="<c-d>"
