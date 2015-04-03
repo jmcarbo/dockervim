@@ -5,3 +5,6 @@ RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 RUN mkdir -p ~/.vim && cd ~/.vim && mkdir -p bundle && cd bundle && git clone git://github.com/klen/python-mode.git
 ADD vimrc /root/.vimrc
 RUN vim +PluginInstall +qall
+RUN mkdir -p ~/.vim/UltiSnips
+ADD python.snippets ~/.vim/UltiSnips
+ADD xml.snippets ~/.vim/UltiSnips
