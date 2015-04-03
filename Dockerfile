@@ -6,5 +6,5 @@ RUN mkdir -p ~/.vim && cd ~/.vim && mkdir -p bundle && cd bundle && git clone gi
 ADD vimrc /root/.vimrc
 RUN vim +PluginInstall +qall
 RUN mkdir -p ~/.vim/UltiSnips
-ADD python.snippets ~/.vim/UltiSnips
-ADD xml.snippets ~/.vim/UltiSnips
+ADD python.snippets ~/.vim/UltiSnips/python.snippets
+ADD xml.snippets ~/.vim/UltiSnips/xml.snippets
