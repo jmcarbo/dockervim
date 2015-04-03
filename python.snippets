@@ -1,26 +1,31 @@
 snippet #!
-	#!/usr/bin/env python
+#!/usr/bin/env python
 endsnippet
 	
 snippet coding
-	# -*- coding: ${1:utf-8} -*-
+# -*- coding: ${1:utf-8} -*-
 endsnippet
+
 snippet imp
-	import ${1:module}
+import ${1:module}
 endsnippet
+
 snippet from
-	from ${1:module} import ${2:class}
+from ${1:module} import ${2:class}
 endsnippet
+
 snippet osv7
-	from openerp.osv import osv
-	from openerp.osv import orm
-	from openerp.osv import fields
-	${1}
+from openerp.osv import osv
+from openerp.osv import orm
+from openerp.osv import fields
+${1}
 endsnippet
+
 snippet osv
-	from openerp import models, api, fields, exceptions
-	${1}
+from openerp import models, api, fields, exceptions
+${1}
 endsnippet
+
 # Module Docstring
 snippet docs
 	'''
@@ -30,13 +35,15 @@ snippet docs
 	'''
 endsnippet
 snippet wh
-	while ${1:condition}:
-		${2:# code...}
+while ${1:condition}:
+	${2:# code...}
 endsnippet
+
 snippet for
-	for ${1:needle} in ${2:haystack}:
-		${3:# code...}
+for ${1:needle} in ${2:haystack}:
+	${3:# code...}
 endsnippet
+
 # New Class
 snippet cl
 	class ${1:ClassName}(${2:object}):
