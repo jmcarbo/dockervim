@@ -1,19 +1,43 @@
 snippet module
 mkdir -p ${1:MyModule}
-touch $1/__init__.py
-echo <<EOF >$1/__openerp__.py
+mkdir -p $1/controllers $1/data $1/models $1/security $1/static $1/static/img $1/static/lib $1/static/src/js $1/static/src/css $1/static/src/less $1/s
+tatic/src/xml $1/views
+touch $1/controllers/__init__.py $1/models/__init__.py
+
+cat >$1/__init__.py <<EOF
+# -*- coding: utf-8 -*-
+import controllers
+import models
+EOF
+
+cat >$1/controllers/__init__.py <<EOF
+# -*- coding: utf-8 -*-
+import controllers
+EOF
+
+cat >$1/models/__init__.py <<EOF
+# -*- coding: utf-8 -*-
+import models
+EOF
+
+cat >$1/__openerp__.py <<EOF
 {
     'name': "$1",
     'version': '1.0',
     'depends': ['base'],
     'author': "${2:Author}",
+    'website': "http://example.com",
     'category': '${3:Category}',
+    'summary': """
+    	Short description
+    """,
     'description': """
 	    ${4:Description text}
     """,
     # data files always loaded at installation
     'data': [
-       ${5}
+       # 'security/ir.model.access.csv',
+              ${5}
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
@@ -21,4 +45,44 @@ echo <<EOF >$1/__openerp__.py
     ],
 }
 EOF
+
+cat >$1/security/ir.model.access.csv <<EOF
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_$1_$1,$1.$1,model_$1_$1,,1,0,0,0
+EOF
+
+cat >$1/controllers/controllers.py <<EOF
+# -*- coding: utf-8 -*-
+from openerp import http
+
+# class Amodule(http.Controller):
+#     @http.route('/amodule/amodule/', auth='public')
+#     def index(self, **kw):
+#         return "Hello, world"
+
+#     @http.route('/amodule/amodule/objects/', auth='public')
+#     def list(self, **kw):
+#         return http.request.render('amodule.listing', {
+#             'root': '/amodule/amodule',
+#             'objects': http.request.env['amodule.amodule'].search([]),
+#         })
+
+#     @http.route('/amodule/amodule/objects/<model("amodule.amodule"):obj>/', auth='public')
+#     def object(self, obj, **kw):
+#         return http.request.render('amodule.object', {
+#             'object': obj
+#         })
+EOF
+
+cat >$1/models/models.py <<EOF
+# -*- coding: utf-8 -*-
+
+from openerp import models, fields, api
+
+# class amodule(models.Model):
+#     _name = 'amodule.amodule'
+
+#     name = fields.Char()
+EOF
+
 endsnippet
