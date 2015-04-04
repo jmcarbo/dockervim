@@ -1,0 +1,24 @@
+snippet module
+mkdir -p ${1:MyModule}
+touch $1/__init__.py
+echo <<EOF >$1/__openerp__.py
+{
+    'name': "$1",
+    'version': '1.0',
+    'depends': ['base'],
+    'author': "${2:Author}",
+    'category': '${3:Category}',
+    'description': """
+	    ${4:Description text}
+    """,
+    # data files always loaded at installation
+    'data': [
+       ${5}
+    ],
+    # data files containing optionally loaded demonstration data
+    'demo': [
+       ${6}
+    ],
+}
+EOF
+endsnippet
