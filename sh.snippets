@@ -1,7 +1,6 @@
 snippet module
 mkdir -p ${1:MyModule}
-mkdir -p $1/controllers $1/data $1/models $1/security $1/static $1/static/img $1/static/lib $1/static/src/js $1/static/src/css $1/static/src/less $1/s
-tatic/src/xml $1/views
+mkdir -p $1/controllers $1/data $1/models $1/security $1/static $1/static/img $1/static/lib $1/static/src/js $1/static/src/css $1/static/src/less $1/static/src/xml $1/views
 touch $1/controllers/__init__.py $1/models/__init__.py
 
 cat >$1/__init__.py <<EOF
