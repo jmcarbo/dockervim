@@ -8,3 +8,4 @@ RUN vim +PluginInstall +qall
 RUN mkdir -p ~/.vim/UltiSnips
 ADD python.snippets /root/.vim/UltiSnips/python.snippets
 ADD xml.snippets /root/.vim/UltiSnips/xml.snippets
+ADD sh.snippets /root/.vim/UltiSnips/sh.snippets
