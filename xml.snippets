@@ -731,3 +731,15 @@ snippet oe_chatter
  </div>
 endsnippet
 
+snippet	act_windows
+<record model="ir.actions.act_window" id="action_list_${1:model}">
+    <field name="name">${2:$1}</field>
+    <field name="res_model">${3:$1}</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+       <p class="oe_view_nocontent_create">Create the first ${4:$1}
+       </p>
+    </field>
+</record>
+endsnippet
+
