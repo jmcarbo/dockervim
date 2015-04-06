@@ -192,7 +192,7 @@ snippet tree
 </tree>
 endsnippet
 snippet form
-<form string="${1:Label}" version="7.0">
+<form string="${1:Label}">
     $2
 </form>
 endsnippet
@@ -364,7 +364,13 @@ snippet viewform
     <field name="priority" eval="8"/>
     <field name="arch" type="xml">
 		<form string="${3:Label}">
-		    <field name="${4:name}"/>
+			<header>
+			</header>
+			<sheet>
+				<group colspan="${4:4}">
+					<field name="${5:name}"/>
+				</group>
+			</sheet>
 		</form>
     </field>
 </record>
@@ -439,8 +445,14 @@ snippet viewboth3
     <field name="type">form</field>
     <field name="priority" eval="8"/>
     <field name="arch" type="xml">
-		<form string="$3">
-		    <field name="$4"/>
+		<form string="${3:Label}">
+			<header>
+			</header>
+			<sheet>
+				<group colspan="${4:4}">
+					<field name="${5:name}"/>
+				</group>
+			</sheet>
 		</form>
     </field>
 </record>
