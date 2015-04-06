@@ -755,3 +755,16 @@ snippet	act_windows
 </record>
 endsnippet
 
+snippet sequence
+<record forcecreate=”1″ id=”seq_${1:type}_id” model=”ir.sequence.type”>
+	<field name=”name”>${2:Name}</field>
+	<field name=”code”>${3:code}</field>
+</record>
+<record forcecreate=”1″ id=”seq_id” model=”ir.sequence”>
+	<field name=”name”>$2</field>
+	<field name=”code”>$3</field>
+	<field name=”padding” eval=”pading”/>
+	<field name=”prefix”>${4:prefix}</field>
+	<field name=”suffix”>${5:suffix}</field>
+</record>
+endsnippet
