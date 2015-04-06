@@ -463,7 +463,7 @@ snippet viewboth3
     <field name="priority" eval="8"/>
     <field name="arch" type="xml">
 		<search string="$3">
-		    <field name="$4" select="True"/>
+		    <field name="${5:name}" select="True"/>
 		</search>
     </field>
 </record>
