@@ -795,3 +795,43 @@ snippet secrule
               <field eval="0" name="perm_create"/>
 </record>
 endsnippet
+
+snippet wkf
+<record id="${1:id}" model="workflow">
+        <field name="name">$1.workflow</field>
+        <field name="osv">${2:model}</field>
+        <field name="on_create">True</field>
+</record>
+
+<record id="${3:id_a}" model="workflow.activity">
+        <field name="wkf_id" ref="$1"/>
+        <field name="flow_start">True</field>
+        <field name="flow_stop">True</field>
+        <field name="name">$3</field>
+        <field name="kind">function</field>
+        <field name="action">${4:function}()</field>
+</record>
+
+<record id="${5:transition_a_b}" model="workflow.transition">
+        <field name="act_from" ref="${6:activity_a}"/>
+        <field name="act_to" ref="${7:activity_b}"/>
+</record>
+endsnippet
+
+snippet wkfa
+<record id="${1:id_a}" model="workflow.activity">
+<field name="wkf_id" ref="$1"/>
+<field name="flow_start">True</field>
+<field name="flow_stop">True</field>
+<field name="name">${2:name}</field>
+<field name="kind">function</field>
+<field name="action">${3:function}()</field>
+</record>
+endsnippet
+
+snippet wkft
+<record id="${1:transition_a_b}" model="workflow.transition">
+        <field name="act_from" ref="${2:activity_a}"/>
+        <field name="act_to" ref="${3:activity_b}"/>
+</record>
+endsnippet
