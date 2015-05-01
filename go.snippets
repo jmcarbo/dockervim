@@ -1,0 +1,25 @@
+snippet webserver
+package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func bla(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	log.Print(r)
+	log.Print("................................\n")
+	log.Print(r.Form)
+
+}
+
+func main() {
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/", fs)
+	http.HandleFunc("/save-form", bla)
+
+	log.Println("Listening...")
+	http.ListenAndServe(":2015", nil)
+}
+endsnippet

@@ -1,0 +1,132 @@
+snippet ejsapp
+Ext.application({
+    name   : 'MyApp',
+
+    launch : function() {
+
+       Ext.create('Ext.Panel', {
+            renderTo     : Ext.getBody(),
+            width        : 200,
+            height       : 150,
+            bodyPadding  : 5,
+            title        : 'Hello World',
+            html         : 'Hello <b>World</b>...'
+        });
+
+    }
+});
+endsnippet
+
+snippet ejsform
+Ext.create('Ext.form.Panel', {
+    title: 'Basic Form',
+    renderTo: Ext.getBody(),
+    bodyPadding: 5,
+    width: 350,
+
+    // Any configuration items here will be automatically passed along to
+    // the Ext.form.Basic instance when it gets created.
+
+    // The form will submit an AJAX request to this URL when submitted
+    url: 'save-form.php',
+
+    items: [{
+        xtype: 'textfield',
+        fieldLabel: 'Field',
+        name: 'theField'
+    }],
+
+    buttons: [{
+        text: 'Submit',
+        handler: function() {
+            // The getForm() method returns the Ext.form.Basic instance:
+            var form = this.up('form').getForm();
+            if (form.isValid()) {
+                // Submit the Ajax request and handle the response
+                form.submit({
+                    success: function(form, action) {
+                       Ext.Msg.alert('Success', action.result.message);
+                    },
+                    failure: function(form, action) {
+                        Ext.Msg.alert('Failed', action.result ? action.result.message : 'No response');
+                    }
+                });
+            }
+        }
+    }]
+});
+endsnippet
+
+snippet ejstextarea
+{
+        xtype     : 'textareafield',
+        grow      : true,
+        name      : 'message',
+        fieldLabel: 'Message',
+        anchor    : '100%'
+}
+endsnippet
+
+snippet ejsmodel
+Ext.define('MyApp.model.Base', {
+    extend: 'Ext.data.Model',
+
+    fields: [{
+        name: 'id',
+        type: 'int'
+    }],
+
+    schema: {
+        namespace: 'MyApp.model',  // generate auto entityName
+
+        proxy: {     // Ext.util.ObjectTemplate
+            type: 'ajax',
+            url: '{entityName}.json',
+            reader: {
+                type: 'json',
+                rootProperty: '{entityName:lowercase}'
+            }
+        }
+    }
+});
+endsnippet
+
+snippet ejsstore
+new Ext.data.Store({
+    model: 'MyApp.model.User',
+    data: [{
+        id: 1,
+        name: "Philip J. Fry"
+    },{
+        id: 2,
+        name: "Hubert Farnsworth"
+    },{
+        id: 3,
+        name: "Turanga Leela"
+    },{
+        id: 4,
+        name: "Amy Wong"
+    }]
+});
+endsnippet
+
+snippet ejsviewmodel
+Ext.define('TestViewModel', {
+    extend: 'Ext.app.ViewModel',
+
+    alias: 'viewmodel.test', // connects to viewModel/type below
+
+    data: {
+        firstName: 'John',
+        lastName: 'Doe'
+    },
+
+    formulas: {
+        // We'll explain formulas in more detail soon.
+        name: function (get) {
+            var fn = get('firstName'), ln = get('lastName');
+            return (fn && ln) ? (fn + ' ' + ln) : (fn || ln || '');
+        }
+    }
+});
+endsnippet
