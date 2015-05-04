@@ -1,5 +1,5 @@
 FROM ubuntu
-RUN apt-get update && apt-get install -y git vim python-software-properties software-properties-common curl wget unzip gcc libc6-dev make
+RUN apt-get update && apt-get install -y git vim python-software-properties software-properties-common curl wget unzip gcc libc6-dev make tmux
 RUN mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 RUN mkdir -p ~/.vim && cd ~/.vim && mkdir -p bundle && cd bundle && git clone git://github.com/klen/python-mode.git
@@ -30,7 +30,11 @@ COPY go-wrapper /usr/local/bin/
 RUN vim +GoInstallBinaries +qall
 ADD go.snippets /root/.vim/UltiSnips/go.snippets
 
-EXPOSE 2015 80
 ADD extjs /go/src/extjs
 ADD html.snippets /root/.vim/UltiSnips/html.snippets
 ADD javascript.snippets /root/.vim/UltiSnips/javascript.snippets
+
+# install meteor
+RUN curl https://install.meteor.com/ | sh
+
+EXPOSE 2015 80 3000

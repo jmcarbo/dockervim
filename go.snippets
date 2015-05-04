@@ -2,16 +2,25 @@ snippet webserver
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 )
+
+type Response struct {
+	Success bool   `json:"success"`
+	Message string `json:"message"`
+}
 
 func bla(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	log.Print(r)
 	log.Print("................................\n")
 	log.Print(r.Form)
-
+	js, _ := json.Marshal(&Response{true, "blabalbal"})
+	w.Header().Set("Content-Type", "application/json")
+	log.Print(string(js))
+	w.Write(js)
 }
 
 func main() {
@@ -23,3 +32,9 @@ func main() {
 	http.ListenAndServe(":2015", nil)
 }
 endsnippet
+
+snippet template
+// "html/template" 
+t, _ = template.ParseFiles("tmpl/welcome.html") //open and parse a template text file
+t.Execute(w, user) //substitute fields in the template 't', with values from 'user' and write it out to 'w' which implements io.Writer
+endtemplate
