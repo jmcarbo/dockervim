@@ -43,3 +43,4 @@ ADD angular_html.snippets /root/.vim/UltiSnips/html/angular_html.snippets
 
 EXPOSE 2015 80 3000
 ENV LANG en_US.UTF-8
+RUN locale-gen en_US.UTF-8
