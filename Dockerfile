@@ -41,6 +41,8 @@ RUN mkdir /root/.vim/UltiSnips/javascript /root/.vim/UltiSnips/html
 ADD angular_js.snippets /root/.vim/UltiSnips/javascript/angular_js.snippets
 ADD angular_html.snippets /root/.vim/UltiSnips/html/angular_html.snippets
 
+ADD tmux.conf /root/.tmux.conf 
+
 EXPOSE 2015 80 3000
 ENV LANG en_US.UTF-8
 RUN locale-gen en_US.UTF-8
